@@ -254,6 +254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   scoreCount: 0
   scoreText: {fileID: 737750822}
+  highScoreCount: 0
+  highScoreText: {fileID: 888232417}
 --- !u!4 &106117283
 Transform:
   m_ObjectHideFlags: 0
@@ -1959,6 +1961,7 @@ GameObject:
   - component: {fileID: 888232416}
   - component: {fileID: 888232418}
   - component: {fileID: 888232417}
+  - component: {fileID: 888232419}
   m_Layer: 5
   m_Name: High Score
   m_TagString: Untagged
@@ -2088,6 +2091,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888232415}
   m_CullTransparentMesh: 1
+--- !u!114 &888232419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888232415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c937d5b6aa3b446268401de01fa30341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreCount: 0
+  scoreText: {fileID: 888232417}
 --- !u!1 &958392556
 GameObject:
   m_ObjectHideFlags: 0

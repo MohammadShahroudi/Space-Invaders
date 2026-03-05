@@ -17,13 +17,18 @@ public class GameManager : MonoBehaviour
     
     public float scoreCount = 0000f;
     public TextMeshProUGUI scoreText;
+
+	public float highScoreCount = 0000f;
+	public TextMeshProUGUI highScoreText;
     
     void Start()
     {
         // todo - sign up for notification about enemy death 
         Enemy.OnEnemyDied += OnEnemyDied;
         
-        
+        // highScoreCount = PlayerPrefs.GetFloat("High_Score", 0f);
+		// highScoreText.text = $"HI-SCORE\n {highScoreCount.ToString()}";
+		
     }
     
     // Update is called once per frame
@@ -40,8 +45,69 @@ public class GameManager : MonoBehaviour
     void OnEnemyDied(float score)
     {
         Debug.Log($"Killed enemy worth {score}");
-        scoreCount += score;
-        scoreText.text = $"SCORE\n {scoreCount.ToString()}";
+        // scoreCount += score;
+        // scoreText.text = $"SCORE\n {score:0000}";
+
+		/*if (scoreCount > highScoreCount)
+		{
+			highScoreCount = score;
+        	highScoreText.text = $"HI-SCORE\n {score:0000}";
+			PlayerPrefs.SetFloat("High_Score", highScoreCount);
+			PlayerPrefs.Save();
+		}*/
+
+		
+		if (scoreCount < 100)
+		{
+			scoreCount += score;
+        	scoreText.text = $"SCORE\n 00{scoreCount.ToString()}";
+
+			if (scoreCount > 100)
+			{
+				scoreCount += score;
+        		scoreText.text = $"SCORE\n 0{scoreCount.ToString()}";
+			}
+		}
+		else if (scoreCount < 1000)
+		{
+			scoreCount += score;
+        	scoreText.text = $"SCORE\n 0{scoreCount.ToString()}";
+		}
+		else
+		{
+			scoreCount += score;
+        	scoreText.text = $"SCORE\n {scoreCount.ToString()}";
+		}
+		if (highScoreCount < scoreCount && highScoreCount < 100)
+		{
+			highScoreCount += score;
+			highScoreText.text = $"HI-SCORE\n 00{highScoreCount.ToString()}";
+
+			if (highScoreCount > 100)
+			{
+				highScoreCount += score;
+        		highScoreText.text = $"SCORE\n 0{scoreCount.ToString()}";
+			}
+			/*highScoreCount = PlayerPrefs.GetFLoat("High_Score", highScoreCount);
+			PlayerPrefs.SetFloat("High_Score", highScoreCount);
+			PlayerPrefs.Save();*/
+		}
+		else if (highScoreCount < scoreCount && highScoreCount < 1000)
+		{
+			highScoreCount += score;
+			highScoreText.text = $"HI-SCORE\n 0{highScoreCount.ToString()}";
+			/*highScoreCount = PlayerPrefs.GetFLoat("High_Score", highScoreCount);
+			PlayerPrefs.SetFloat("High_Score", highScoreCount);
+			PlayerPrefs.Save();*/
+		}
+		else
+		{
+			highScoreCount += score;
+        	highScoreText.text = $"SCORE\n {scoreCount.ToString()}";
+			/*highScoreCount = PlayerPrefs.GetFLoat("High_Score", highScoreCount);
+			PlayerPrefs.SetFloat("High_Score", highScoreCount);
+			PlayerPrefs.Save();*/
+		}
     }
     
 }
