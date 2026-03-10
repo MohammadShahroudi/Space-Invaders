@@ -10,12 +10,14 @@ public class SceneLoaderLive : MonoBehaviour
     
     public void LoadGame()
     {
-        // SceneManager.LoadScene("Game");
-        StartCoroutine(_LoadGame());
+		StartCoroutine(_LoadGame());
+		// StartCoroutine(_LoadCredits());
 
         IEnumerator _LoadGame()
         {
             AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Schmup");
+			// AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Credits");
+
             while (!loadOperation!.isDone) yield return null;
         
             // wait until scene is loaded and ready and then find the player
@@ -24,7 +26,7 @@ public class SceneLoaderLive : MonoBehaviour
         }
     }
     
-    public void LoadCredits()
+    public void _LoadCredits()
     {
         // SceneManager.LoadScene("Game");
         StartCoroutine(_LoadCredits());
@@ -35,8 +37,8 @@ public class SceneLoaderLive : MonoBehaviour
             while (!loadOperation!.isDone) yield return null;
         
             // wait until scene is loaded and ready and then find the player
-            // GameObject playerObj = GameObject.Find("Player");
-            // Debug.Log(playerObj.name);
+            GameObject playerObj = GameObject.Find("Player");
+            Debug.Log(playerObj.name);
         }
     }
 }

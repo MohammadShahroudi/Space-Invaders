@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     {
         enemyStartPos = gameObject.transform.position;
         Rigidbody enemyBody = GetComponent<Rigidbody>();
-        enemyBody.linearVelocity = new Vector3(1f, 0f, 0f) * 1.1f;
+        enemyBody.linearVelocity = new Vector3(1f, 0f, 0f) * 0.5f;
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
