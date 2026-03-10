@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
 	// public AudioClip shootSound;
 	// AudioSource audioSource;
 
+	public AudioClip ticClip;
+	public AudioClip tacClip;
+
     public delegate void EnemyDiedFunc(float points);
     public static event EnemyDiedFunc OnEnemyDied;
 	public float score = 0f;
@@ -60,4 +63,16 @@ public class Enemy : MonoBehaviour
         }
         // todo - trigger death animation
     }
+
+	public void PlayTicSound()
+	{
+		// Debug.Log("tic");
+		GetComponent<AudioSource>().PlayOneShot(ticClip);	
+	}
+
+	public void PlayTacSound()
+	{
+		// Debug.Log("tac");
+		GetComponent<AudioSource>().PlayOneShot(tacClip);	
+	}
 }
