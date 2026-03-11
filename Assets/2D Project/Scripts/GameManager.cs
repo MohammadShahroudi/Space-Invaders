@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
 
     // BackRowEnemy
     // Purple enemies = 100 points
+
+	// enemyAmount is 17
+	// 
     
     public float scoreCount = 0000f;
     public TextMeshProUGUI scoreText;

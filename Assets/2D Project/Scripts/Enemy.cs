@@ -33,7 +33,11 @@ public class Enemy : MonoBehaviour
 
 	void Update()
 	{
-		
+		// roll a random number
+		// if that number is true then set can shoot
+		// add a timer
+		// then shoot the bullet prefab
+		// set can shoot to false
 	}
 
     void OnCollisionEnter2D(Collision2D collision)

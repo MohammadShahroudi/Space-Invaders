@@ -13,6 +13,9 @@ public class Movement : MonoBehaviour
     // private float moveSpeed = 5f;
     // public Transform enemy;
     Vector3 enemyStartPos; 
+
+	// enemyAmount is 17
+	// 
     
     void FixedUpdate()
     {
