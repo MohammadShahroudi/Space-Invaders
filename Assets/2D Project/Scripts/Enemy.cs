@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour
     public static event EnemyDiedFunc OnEnemyDied;
 	public float score = 0f;
 
+	// enemyAmount is 17
+	// public int enemyAmount = 17;
+
 	/*public GameObject bulletPrefab;
     public Transform shootOffsetTransform;
 	public float moveSpeed = 3.0f;*/
@@ -40,9 +43,11 @@ public class Enemy : MonoBehaviour
 		// set can shoot to false
 	}
 
+	// if an enemy get hit then pause 
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Ouch!");
+		StartCoroutine(Pause(collision));
         
         // todo - destroy the bullet
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
@@ -53,6 +58,11 @@ public class Enemy : MonoBehaviour
         }
         // todo - trigger death animation
     }
+
+	public IEnumerator Pause(Collision2D enemies)
+	{
+		yield return new WaitForSeconds(5f);
+	}
 
 	public void PlayTicSound()
 	{

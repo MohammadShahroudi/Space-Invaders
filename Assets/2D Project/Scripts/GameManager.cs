@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     // Purple enemies = 100 points
 
 	// enemyAmount is 17
-	// 
+	// public int enemyAmount = 17;
     
     public float scoreCount = 0000f;
     public TextMeshProUGUI scoreText;
@@ -28,10 +28,6 @@ public class GameManager : MonoBehaviour
     {
         // todo - sign up for notification about enemy death 
         Enemy.OnEnemyDied += OnEnemyDied;
-        
-        // highScoreCount = PlayerPrefs.GetFloat("High_Score", 0f);
-		// highScoreText.text = $"HI-SCORE\n {highScoreCount.ToString()}";
-		
     }
     
     // Update is called once per frame
@@ -48,8 +44,6 @@ public class GameManager : MonoBehaviour
     void OnEnemyDied(float score)
     {
         Debug.Log($"Killed enemy worth {score}");
-        // scoreCount += score;
-        // scoreText.text = $"SCORE\n {score:0000}";
 
 		if (scoreCount < 100)
 		{
