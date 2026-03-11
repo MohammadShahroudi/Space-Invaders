@@ -30,10 +30,6 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-		/*float horizontalInput = Input.GetAxis("Horizontal");
-        Vector3 rightMovement = transform.right * horizontalInput;
-        transform.position += rightMovement * moveSpeed * Time.deltaTime;*/
-
 		float verticalInput = Input.GetAxis("Vertical");
         Vector3 upMovement = transform.up * verticalInput;
         transform.position += upMovement * moveSpeed * Time.deltaTime;
@@ -50,5 +46,11 @@ public class Player : MonoBehaviour
             // todo - trigger shoot animation
             GetComponent<Animator>().SetTrigger("Shot Trigger");
         }
+		
+		// if the player dies then go to the credits
+		/*if ()
+		{
+
+		}*/
     }
 }

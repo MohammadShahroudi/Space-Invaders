@@ -48,15 +48,6 @@ public class GameManager : MonoBehaviour
         // scoreCount += score;
         // scoreText.text = $"SCORE\n {score:0000}";
 
-		/*if (scoreCount > highScoreCount)
-		{
-			highScoreCount = score;
-        	highScoreText.text = $"HI-SCORE\n {score:0000}";
-			PlayerPrefs.SetFloat("High_Score", highScoreCount);
-			PlayerPrefs.Save();
-		}*/
-
-		
 		if (scoreCount < 100)
 		{
 			scoreCount += score;

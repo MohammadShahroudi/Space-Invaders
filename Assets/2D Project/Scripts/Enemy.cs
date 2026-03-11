@@ -23,27 +23,13 @@ public class Enemy : MonoBehaviour
     
 	void Start()
 	{
-		// GetComponent<Rigidbody2D>().linearVelocity = Vector2.down * moveSpeed;
-		// StartCoroutine(EnemyCoroutine());
+		
 	}
 
 	/*void Awake()
     {
        audioSource = GetComponent<AudioSource>();
-    }
-	
-	IEnumerator EnemyCoroutine()
-	{
-		while (true)
-		{
-			yield return new WaitForSeconds(5);
-			GameObject shot = Instantiate(bulletPrefab, shootOffsetTransform.position, Quaternion.identity);
-            Debug.Log("Bang!");
-			audioSource.PlayOneShot(shootSound);
-			Destroy(shot, 3f);
-            GetComponent<Animator>().SetTrigger("Shot Trigger");
-		}
-	}*/
+    }*/
 
 	void Update()
 	{
