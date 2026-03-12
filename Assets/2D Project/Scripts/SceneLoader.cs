@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+
 public class SceneLoaderLive : MonoBehaviour
 {
     void Start()
@@ -8,10 +9,9 @@ public class SceneLoaderLive : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     
-    public void LoadGame()
+	public void LoadGame()
     {
 		StartCoroutine(_LoadGame());
-		// StartCoroutine(_LoadCredits());
 
         IEnumerator _LoadGame()
         {
@@ -25,8 +25,8 @@ public class SceneLoaderLive : MonoBehaviour
             Debug.Log(playerObj.name);
         }
     }
-    
-    public void _LoadCredits()
+
+    /*public void _LoadCredits()
     {
         // SceneManager.LoadScene("Game");
         StartCoroutine(_LoadCredits());
@@ -40,5 +40,5 @@ public class SceneLoaderLive : MonoBehaviour
             GameObject playerObj = GameObject.Find("Player");
             Debug.Log(playerObj.name);
         }
-    }
+    }*/
 }

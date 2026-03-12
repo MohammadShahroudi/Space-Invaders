@@ -1,14 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Audio;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 using TMPro;
 
-// [RequireComponent(typeof(Rigidbody2D))]
-// [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
 	// public AudioClip shootSound;
-	// AudioSource audioSource;
+	AudioSource audioSource;
+	public AudioClip explodeSound;
+
+	public GameObject bulletPrefab;
+    public Transform shootOffsetTransform;
 
 	public AudioClip ticClip;
 	public AudioClip tacClip;
@@ -16,23 +22,16 @@ public class Enemy : MonoBehaviour
     public delegate void EnemyDiedFunc(float points);
     public static event EnemyDiedFunc OnEnemyDied;
 	public float score = 0f;
-
-	// enemyAmount is 17
-	// public int enemyAmount = 17;
-
-	/*public GameObject bulletPrefab;
-    public Transform shootOffsetTransform;
-	public float moveSpeed = 3.0f;*/
     
 	void Start()
 	{
 		
 	}
 
-	/*void Awake()
+	void Awake()
     {
        audioSource = GetComponent<AudioSource>();
-    }*/
+    }
 
 	void Update()
 	{
@@ -41,28 +40,35 @@ public class Enemy : MonoBehaviour
 		// add a timer
 		// then shoot the bullet prefab
 		// set can shoot to false
+		/*int randomNumber = UnityEngine.Random.Range();
+		float timer = 0.0f;
+		bool canShoot;
+		int number;
+		
+		if (number == true)
+		{
+			timer += Time.deltaTime;
+			canShoot = true;
+		}
+		canShoot = false;*/
+		
 	}
 
-	// if an enemy get hit then pause 
+	// if an enemy gets hit then pause 
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Ouch!");
-		StartCoroutine(Pause(collision));
         
         // todo - destroy the bullet
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
+			audioSource.PlayOneShot(explodeSound);
             Destroy(collision.gameObject);
             Destroy(gameObject);
             OnEnemyDied?.Invoke(score);
         }
         // todo - trigger death animation
     }
-
-	public IEnumerator Pause(Collision2D enemies)
-	{
-		yield return new WaitForSeconds(5f);
-	}
 
 	public void PlayTicSound()
 	{

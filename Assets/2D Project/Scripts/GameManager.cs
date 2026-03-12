@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class GameManager : MonoBehaviour
     // Purple enemies = 100 points
 
 	// enemyAmount is 17
-	// public int enemyAmount = 17;
+	public int enemyAmount = 17;
     
     public float scoreCount = 0000f;
     public TextMeshProUGUI scoreText;
@@ -40,10 +42,29 @@ public class GameManager : MonoBehaviour
     {
         Enemy.OnEnemyDied -= OnEnemyDied;
     }
+
+	public void LoadCredits()
+    {
+        // SceneManager.LoadScene("Game");
+        StartCoroutine(_LoadCredits());
+    }
+
+	IEnumerator _LoadCredits()
+    {
+    	AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Credits");
+        while (!loadOperation!.isDone) yield return null;
+    }
     
     void OnEnemyDied(float score)
     {
         Debug.Log($"Killed enemy worth {score}");
+		enemyAmount--;
+		
+		if (enemyAmount == 0)
+		{
+			Debug.Log("All Enemies Dead!");
+			LoadCredits();
+		}
 
 		if (scoreCount < 100)
 		{

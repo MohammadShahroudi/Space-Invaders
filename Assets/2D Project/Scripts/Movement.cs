@@ -9,33 +9,21 @@ using TMPro;
 public class Movement : MonoBehaviour
 {
     Vector3 enemyStartPos; 
-
-	// enemyAmount is 17
-	public int enemyAmount = 17;
+	public float moveInterval = 3.0f;
+	float timer = 0.0f;
     
     void FixedUpdate()
     {
-		
-        enemyStartPos = gameObject.transform.position;
-        Rigidbody enemyBody = GetComponent<Rigidbody>();
-        enemyBody.linearVelocity = new Vector3(1f, 0f, 0f) * 0.5f;
-		
-    }
+		timer += Time.deltaTime;
 
-	// if an enemy get hit then
-	// decrement enemyAmount
-	// if enemyAmount == 0 then All Enemies Dead!
-	void OnCollision2D(Collision2D collision)
-	{
-		if (enemyAmount == 0)
+		if (timer >= moveInterval)
 		{
-			Debug.Log("All Enemies Dead!");
+			timer = 0.0f;
+			enemyStartPos = gameObject.transform.position;
+        	Rigidbody enemyBody = GetComponent<Rigidbody>();
+        	enemyBody.transform.position += new Vector3(0.5f, 0f, 0f);
 		}
-		if (collision.gameObject)
-        {
-			enemyAmount--;
-        }
-	}
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
