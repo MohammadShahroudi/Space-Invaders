@@ -58,11 +58,11 @@ public class Enemy : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Ouch!");
+		audioSource.PlayOneShot(explodeSound);
         
         // todo - destroy the bullet
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
-			audioSource.PlayOneShot(explodeSound);
             Destroy(collision.gameObject);
             Destroy(gameObject);
             OnEnemyDied?.Invoke(score);
